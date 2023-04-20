@@ -1,0 +1,16 @@
+/* Write your CSS here */
+.bg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  color: blue;
+  font-size: 32px;
+  font-family: sans-serif;
+  margin-bottom: 13px;
+}
+.ul-container {
+  list-style-type: none;
+}

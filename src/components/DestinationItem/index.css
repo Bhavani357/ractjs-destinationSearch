@@ -1,0 +1,9 @@
+.image {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 8px;
+}
+.para {
+  font-size: 12px;
+  font-family: sans-serif;
+}
