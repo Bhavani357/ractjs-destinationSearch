@@ -1,44 +1,52 @@
-import './index.css'
-
 import {Component} from 'react'
 
-import SearchInputElement from '../DestinationItem'
+import DestinationItem from '../DestinationItem'
+
+import './index.css'
 
 class DestinationSearch extends Component {
-  state = {searchItem: ''}
+  state = {
+    searchInput: '',
+  }
 
   onChangeSearchInput = event => {
-    this.setState({
-      searchItem: event.target.value,
-    })
+    this.setState({searchInput: event.target.value})
   }
 
   render() {
-    const {searchItem} = this.state
+    const {searchInput} = this.state
     const {destinationsList} = this.props
-
-    const searchResults = destinationsList.filter(each =>
-      each.name.toLowerCase().includes(searchItem),
+    const searchResults = destinationsList.filter(eachDestination =>
+      eachDestination.name.toLowerCase().includes(searchInput.toLowerCase()),
     )
 
     return (
-      <div className="bg-container">
-        <h1 className="heading">Destination Search</h1>
-        <input
-          type="search"
-          onChange={this.onChangeSearchInput}
-          value={searchItem}
-        />
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/destinations-search-icon-img.png"
-          alt="search icon"
-          className="search-icon"
-        />
-        <ul className="ul-container">
-          {searchResults.map(each => (
-            <SearchInputElement eachPerson={each} key={each.id} />
-          ))}
-        </ul>
+      <div className="app-container">
+        <div className="destinations-search-container">
+          <h1 className="heading">Destination Search</h1>
+          <div className="search-input-container">
+            <input
+              type="search"
+              className="search-input"
+              placeholder="Search"
+              value={searchInput}
+              onChange={this.onChangeSearchInput}
+            />
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/destinations-search-icon-img.png"
+              alt="search icon"
+              className="search-icon"
+            />
+          </div>
+          <ul className="destinations-list">
+            {searchResults.map(eachDestination => (
+              <DestinationItem
+                key={eachDestination.id}
+                destinationDetails={eachDestination}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }

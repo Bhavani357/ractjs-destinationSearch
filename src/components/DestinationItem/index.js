@@ -1,19 +1,15 @@
 import './index.css'
 
-import {Component} from 'react'
+const DestinationItem = props => {
+  const {destinationDetails} = props
+  const {imgUrl, name} = destinationDetails
 
-class SearchInputElement extends Component {
-  render() {
-    const {eachPerson} = this.props
-    const {name, imgUrl} = eachPerson
-
-    return (
-      <li>
-        <img src={imgUrl} alt={name} className="image" />
-        <p>{name}</p>
-      </li>
-    )
-  }
+  return (
+    <li className="destination-item">
+      <img src={imgUrl} alt={name} className="destination-image" />
+      <p className="name">{name}</p>
+    </li>
+  )
 }
 
-export default SearchInputElement
+export default DestinationItem
